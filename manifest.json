@@ -1,0 +1,52 @@
+{
+  "name": "Seven Store — اشتراكات رقمية",
+  "short_name": "Seven Store",
+  "description": "متجر اشتراكات رقمية",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#EEF4FF",
+  "theme_color": "#1a3bcc",
+  "lang": "ar",
+  "dir": "rtl",
+  "categories": ["shopping", "utilities"],
+  "icons": [
+    {
+      "src": "assets/images/image_01.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/images/image_01.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "assets/images/image_01.jpg",
+      "sizes": "1280x720",
+      "type": "image/jpeg",
+      "label": "Seven Store — الصفحة الرئيسية"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "المنتجات",
+      "short_name": "المنتجات",
+      "description": "تصفح اشتراكاتنا الرقمية",
+      "url": "/#products",
+      "icons": [{ "src": "assets/images/image_01.jpg", "sizes": "192x192" }]
+    },
+    {
+      "name": "تواصل معنا",
+      "short_name": "واتساب",
+      "description": "تواصل معنا عبر واتساب",
+      "url": "https://wa.me/966503446839",
+      "icons": [{ "src": "assets/images/image_01.jpg", "sizes": "192x192" }]
+    }
+  ]
+}
