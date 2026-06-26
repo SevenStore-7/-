@@ -88,15 +88,20 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     .subpage-hero {
-      padding: 140px 24px 40px;
+      padding: 140px 24px 44px;
       text-align: center;
-      background: var(--bg-soft);
+      background: linear-gradient(135deg, var(--blue-50), var(--bg) 60%);
+      transition: background var(--transition);
+    }
+    [data-theme="dark"] .subpage-hero {
+      background: linear-gradient(135deg, #0d1b3f, #0a0f1e 65%);
     }
     .subpage-hero h1 {
       font-size: clamp(1.8rem, 4vw, 2.6rem);
       font-weight: 800;
       color: var(--text-900);
-      margin-bottom: 10px;
+      margin-bottom: 12px;
+      letter-spacing: -.01em;
     }
     .subpage-hero p {
       color: var(--text-600);
@@ -105,20 +110,20 @@
     .subpage-content {
       max-width: 860px;
       margin: 0 auto;
-      padding: 50px 24px 90px;
-      line-height: 2;
-      color: var(--text-700);
+      padding: 54px 24px 90px;
+      line-height: 1.95;
+      color: var(--text-600);
     }
     .subpage-content h2 {
       font-size: 1.3rem;
       font-weight: 800;
       color: var(--text-900);
-      margin: 32px 0 14px;
+      margin: 36px 0 14px;
     }
     .subpage-content h2:first-child { margin-top: 0; }
-    .subpage-content p { margin-bottom: 14px; }
-    .subpage-content ul { margin: 0 0 14px; padding-inline-start: 22px; }
-    .subpage-content li { margin-bottom: 8px; }
+    .subpage-content p { margin-bottom: 16px; }
+    .subpage-content ul { margin: 0 0 16px; padding-inline-start: 22px; }
+    .subpage-content li { margin-bottom: 9px; }
     .subpage-content a { color: var(--blue-500); text-decoration: underline; }
   </style>
   <style>
@@ -171,6 +176,16 @@
 
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
     html { scroll-behavior:smooth; }
+
+    /* انتقال ناعم عام بين الوضع النهاري والليلي (لا يؤثر على المقاسات) */
+    body, #navbar, footer, .product-card, .modal-img, #modal-box,
+    .modal-info-item, .device-chip, .search-wrap input, .sort-select,
+    .subpage-hero, .subpage-header-close {
+      transition: background-color var(--transition), background var(--transition),
+                  color var(--transition), border-color var(--transition),
+                  box-shadow var(--transition);
+    }
+
     body {
       font-family: var(--font-ar);
       background: var(--bg);
@@ -275,6 +290,7 @@
       font-size:.85rem; font-weight:600;
       color: var(--blue-700); border:1.5px solid var(--blue-200, #c7d3ff);
       padding:7px 16px; border-radius:99px;
+      min-width:44px; text-align:center;
       transition: all var(--transition);
     }
     .btn-lang:hover { background: var(--blue-700); color:#fff; }
@@ -1232,7 +1248,7 @@ function applyLangSubpage() {
   });
 
   document.querySelectorAll('#lang-toggle, #lang-toggle-m').forEach(btn => {
-    btn.textContent = currentLang === 'ar' ? 'EN' : 'عربي';
+    btn.textContent = currentLang === 'ar' ? 'EN' : 'ع';
   });
 }
 
