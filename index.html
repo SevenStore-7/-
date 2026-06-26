@@ -428,14 +428,6 @@ overflow: hidden;
 .btn-primary:active{
     transform:scale(.97);
 }
-    /* نبضة هادئة لزر تصفح المنتجات (أبيض) */
-    @keyframes heroBtnPulse {
-      0%,100% { box-shadow: 0 8px 32px rgba(26,59,204,.35); }
-      50%      { box-shadow: 0 8px 32px rgba(26,59,204,.35), 0 0 0 10px rgba(255,255,255,.25); }
-    }
-    .btn-primary-pulse {
-      animation: heroBtnPulse 1s ease-in-out infinite;
-    }
 
     .btn-secondary {
       display:inline-flex; align-items:center; gap:10px;
@@ -521,8 +513,8 @@ overflow: hidden;
       opacity:0;
       transform:translateY(36px);
       background:var(--white); border-radius:var(--radius-lg);
-      border:1.5px solid var(--blue-100); overflow:hidden;
-      box-shadow:var(--shadow-md);
+      border:1px solid var(--border); overflow:hidden;
+      box-shadow:var(--shadow-sm);
       transition: opacity .55s cubic-bezier(.4,0,.2,1),
                   transform .55s cubic-bezier(.4,0,.2,1),
                   box-shadow var(--transition),
@@ -543,9 +535,11 @@ overflow: hidden;
     .product-card.show:nth-child(6) { transition-delay: .40s; }
     .product-card.show:nth-child(7) { transition-delay: .48s; }
     .product-card.show:nth-child(8) { transition-delay: .56s; }
-    .product-card:hover {
-      transform:translateY(-6px); box-shadow:var(--shadow-xl);
-      border-color:var(--blue-500);
+    .product-card:hover,
+    .product-card:active,
+    .product-card.touch-active {
+      transform:translateY(-6px); box-shadow:var(--shadow-lg);
+      border-color:var(--blue-400);
     }
     .product-card-badge {
       position:absolute; top:12px; right:12px;
@@ -1014,18 +1008,31 @@ box-sizing:border-box;
       .slider-card{width:calc(80% - 14px);}
       .modal-info-grid{grid-template-columns:1fr;}
       .contact-card{padding:32px 24px;}
+
+      /* تثبيت زر "اطلب الآن" أسفل صفحة تفاصيل المنتج على الجوال فقط،
+         بحيث يبقى ظاهرًا دائمًا أثناء التمرير لأسفل (لا يؤثر على سطح المكتب) */
+      .modal-body{ padding-bottom:96px; }
+      .modal-actions{
+        position:sticky; bottom:0; left:0; right:0;
+        margin:20px -24px -24px; margin-top:20px;
+        padding:14px 24px calc(14px + env(safe-area-inset-bottom));
+        background:var(--white);
+        box-shadow:0 -8px 20px rgba(0,0,0,.08);
+        border-radius:0 0 var(--radius-xl) var(--radius-xl);
+        z-index:5;
+      }
+      [data-theme="dark"] .modal-actions{ background:var(--bg-soft, #1e293b); }
     }
     @media(max-width:480px){
       .hero-cta{flex-direction:column;}
       .btn-primary,.btn-secondary{width:100%;justify-content:center;}
-      .modal-body{padding:20px;}
+      .modal-body{padding:20px;padding-bottom:96px;}
+      .modal-actions{margin:20px -20px -20px;padding:14px 20px calc(14px + env(safe-area-inset-bottom));}
     }
 
     /* ============================================================
        SUBPAGE HEADER CLOSE BUTTON (privacy/terms/refund/about pages)
-       — لا تؤثر هذه القاعدة على index.html نفسها، وتُستخدم فقط عند
-       نسخ الهيدر المشترك .subpage-header إلى الصفحات الأخرى.
-       القالب الجاهز موجود في تعليق HTML قبل إغلاق </body>.
+       — تُستخدم في هيدر الصفحات الفرعية (نفس هيدر index.html + زر ✕).
     ============================================================ */
     .subpage-header-close {
       width:40px; height:40px; border-radius:50%;
@@ -1117,7 +1124,7 @@ box-sizing:border-box;
     <ul class="nav-links" id="nav-links">
       <li><a href="index.html" data-ar="الرئيسية" data-en="Home">الرئيسية</a></li>
       <li><a href="index.html#products" data-ar="المنتجات" data-en="Products">المنتجات</a></li>
-      <li><a href="index.html#why" data-ar="من نحن" data-en="About Us">من نحن</a></li>
+      <li><a href="about.html" data-ar="من نحن" data-en="About Us">من نحن</a></li>
       <li><a href="index.html#contact" data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</a></li>
     </ul>
 
@@ -1136,7 +1143,7 @@ box-sizing:border-box;
     <div class="mobile-links">
       <a href="index.html" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
       <a href="index.html#products" data-ar="المنتجات" data-en="Products">المنتجات</a>
-      <a href="index.html#why" data-ar="من نحن" data-en="About Us">من نحن</a>
+      <a href="about.html" data-ar="من نحن" data-en="About Us">من نحن</a>
       <a href="index.html#contact" data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</a>
     </div>
     <div class="mobile-actions">
@@ -1163,7 +1170,7 @@ box-sizing:border-box;
 نوفر أفضل تجربة رقمية
       </p>
       <div class="hero-cta">
-        <a href="#products" class="btn-primary btn-primary-pulse">
+        <a href="#products" class="btn-primary">
           <i class="fas fa-shopping-bag"></i>
           <span data-ar="تصفح المنتجات" data-en="Browse Products">تصفح المنتجات</span>
         </a>
@@ -2129,6 +2136,21 @@ observeReveal();
 
 // Product card stagger animation is handled inside renderProducts()
 
+// إظهار تأثير الحدود الزرقاء + الـ Shadow عند اللمس على الجوال (مثل hover على الديسكتوب)
+document.addEventListener('touchstart', (e) => {
+  const card = e.target.closest('.product-card');
+  if (!card) return;
+  document.querySelectorAll('.product-card.touch-active').forEach(c => {
+    if (c !== card) c.classList.remove('touch-active');
+  });
+  card.classList.add('touch-active');
+}, { passive: true });
+document.addEventListener('touchend', () => {
+  setTimeout(() => {
+    document.querySelectorAll('.product-card.touch-active').forEach(c => c.classList.remove('touch-active'));
+  }, 350);
+}, { passive: true });
+
 /* ============================================================
    PWA — SERVICE WORKER REGISTRATION
 ============================================================ */
@@ -2179,28 +2201,5 @@ window.addEventListener('appinstalled', () => {
   deferredPrompt = null;
 });
 </script>
-
-<!-- ════════════════════════════════════════════════════════════════
-     قالب جاهز للهيدر المشترك + زر الإغلاق (✕)
-     استخدمه في privacy.html / terms.html / refund.html / about.html
-     فقط — لا تأثير له على هذه الصفحة (index.html). الصق هذا الـ HTML
-     بدلاً من أي <header>/<nav> قديم في تلك الصفحات، وأضف وسم
-     <link rel="stylesheet"> أو نسخ كتلة .subpage-header-close CSS
-     الموجودة أعلى هذا الملف إلى تلك الصفحات إن لم تكن تشترك بالستايل.
-
-<header class="subpage-header" style="position:sticky;top:0;z-index:1000;background:#fff;border-bottom:1px solid #e2e8f0;">
-  <div style="max-width:1320px;margin:0 auto;padding:0 24px;height:80px;display:flex;align-items:center;justify-content:space-between;">
-    <a href="index.html" aria-label="Seven Store">
-      <img src="assets/images/image_02.png" alt="Seven Store" style="height:50px;width:auto;object-fit:contain;" />
-    </a>
-    <button class="subpage-header-close" onclick="if (history.length > 1) { history.back(); } else { window.location.href='index.html'; }" aria-label="إغلاق والعودة">
-      <i class="fas fa-times"></i>
-    </button>
-  </div>
-</header>
-
-ملاحظة: زر (✕) يعود للصفحة السابقة إن وُجدت، وإن لم توجد (مثلاً عند فتح
-الرابط مباشرة) يعود إلى index.html تلقائياً.
-════════════════════════════════════════════════════════════════ -->
 </body>
 </html>
