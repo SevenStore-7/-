@@ -1140,7 +1140,7 @@ box-sizing:border-box;
 
 <div id="loader">
   <div class="loader-inner">
-    <img src="assets/images/image_01.jpg" alt="Seven Store" class="loader-logo" />
+    <img src="assets/images/image_01.jpg" alt="Seven Store" class="loader-logo" id="loader-logo-img" />
     <div class="loader-bar"><div class="loader-bar-fill"></div></div>
   </div>
 </div>
@@ -1148,7 +1148,7 @@ box-sizing:border-box;
 <nav id="navbar">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo" aria-label="Seven Store">
-      <img src="assets/images/image_02.png" alt="Seven Store" />
+      <img src="assets/images/image_02.png" alt="Seven Store" id="nav-logo-img" />
     </a>
 
     <ul class="nav-links" id="nav-links">
@@ -2080,10 +2080,14 @@ function observeReveal() {
 }
 
 const darkBtn = document.getElementById('dark-toggle');
+const navLogoImg = document.getElementById('nav-logo-img');
+const loaderLogoImg = document.getElementById('loader-logo-img');
 function setDark(on) {
   document.documentElement.setAttribute('data-theme', on ? 'dark' : 'light');
   darkBtn.innerHTML = on ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
   localStorage.setItem('sevenstore-dark', on ? '1' : '0');
+  if (navLogoImg) navLogoImg.src = on ? 'assets/images/image_03.png' : 'assets/images/image_02.png';
+  if (loaderLogoImg) loaderLogoImg.src = on ? 'assets/images/image_03.png' : 'assets/images/image_01.jpg';
 }
 darkBtn.addEventListener('click', () => {
   setDark(document.documentElement.getAttribute('data-theme') !== 'dark');
@@ -2131,6 +2135,38 @@ document.getElementById('slider-next').addEventListener('click', () => {
   updateSliderPosition();
 });
 window.addEventListener('resize', updateSliderPosition);
+
+// دعم السحب باللمس (Swipe) لسلايدر المنتجات المميزة على الجوال
+(function () {
+  const sliderWrap = document.querySelector('.slider-wrap');
+  if (!sliderWrap) return;
+  let touchStartX = 0;
+  let touchDeltaX = 0;
+  const swipeThreshold = 40;
+
+  sliderWrap.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].clientX;
+    touchDeltaX = 0;
+  }, { passive: true });
+
+  sliderWrap.addEventListener('touchmove', (e) => {
+    touchDeltaX = e.touches[0].clientX - touchStartX;
+  }, { passive: true });
+
+  sliderWrap.addEventListener('touchend', () => {
+    if (Math.abs(touchDeltaX) < swipeThreshold) return;
+    const isRtl = document.documentElement.dir === 'rtl';
+    const swipedLeft = touchDeltaX < 0;
+    const goNext = isRtl ? !swipedLeft : swipedLeft;
+    if (goNext) {
+      const max = featuredProducts.length - visibleSlides();
+      sliderIndex = Math.min(sliderIndex + 1, max);
+    } else {
+      sliderIndex = Math.max(sliderIndex - 1, 0);
+    }
+    updateSliderPosition();
+  }, { passive: true });
+})();
 
 document.getElementById('search-input').addEventListener('input', e => {
   currentSearch = e.target.value;
