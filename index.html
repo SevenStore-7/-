@@ -496,14 +496,18 @@ overflow: hidden;
     .section-soft { background:var(--bg-soft); }
     .container { max-width:1320px; margin:0 auto; }
     .section-header { text-align:center; margin-bottom:48px; }
-    .section-eyebrow {
-      display:inline-block;
-      background:var(--blue-50); color:var(--blue-700);
-      border:1px solid var(--blue-100);
-      padding:5px 16px; border-radius:99px;
-      font-size:.85rem; font-weight:700; letter-spacing:.05em;
-      margin-bottom:14px;
-    }
+    .section-eyebrow{
+    display:inline-block;
+    background:var(--blue-50);
+    color:var(--blue-700);
+    border:1px solid var(--blue-100);
+    padding:8px 22px;
+    border-radius:999px;
+    font-size:1.05rem;
+    font-weight:800;
+    letter-spacing:.03em;
+    margin-bottom:16px;
+}
     .section-title {
       font-size:clamp(1.8rem,3.5vw,2.6rem);
       font-weight:800; line-height:1.25; margin-bottom:14px;
@@ -1223,7 +1227,11 @@ box-sizing:border-box;
   <div class="container">
     <div class="section-header reveal">
       <span class="section-eyebrow" data-ar="الأكثر طلباً" data-en="Best Sellers">الأكثر طلباً</span>
-      <h2 class="section-title" data-ar="الاشتراكات المميزة" data-en="Featured Subscriptions">الاشتراكات المميزة</h2>
+      <h2 class="section-title"
+    data-ar="الأكثر طلباً"
+    data-en="Best Sellers">
+    الأكثر طلباً
+</h2>
     </div>
 
     <div class="slider-wrap reveal">
@@ -1240,7 +1248,6 @@ box-sizing:border-box;
   <div class="container">
     <div class="section-header reveal">
       <span class="section-eyebrow" data-ar="الفئات" data-en="Categories">الفئات</span>
-      <h2 class="section-title" data-ar="تصفح حسب الفئة" data-en="Browse by Category">تصفح حسب الفئة</h2>
     </div>
     <div class="categories-grid reveal" id="cats-grid"></div>
   </div>
@@ -1250,7 +1257,6 @@ box-sizing:border-box;
   <div class="container">
     <div class="section-header reveal">
       <span class="section-eyebrow" data-ar="جميع المنتجات" data-en="All Products">جميع المنتجات</span>
-      <h2 class="section-title" data-ar="اختر اشتراكك الآن" data-en="Choose Your Subscription Now">اختر اشتراكك الآن</h2>
     </div>
 
     <div class="products-toolbar reveal">
@@ -1274,7 +1280,6 @@ box-sizing:border-box;
   <div class="container">
     <div class="section-header reveal">
       <span class="section-eyebrow" data-ar="لماذا نحن" data-en="Why Us">لماذا نحن</span>
-      <h2 class="section-title" data-ar="لماذا تختار Seven Store؟" data-en="Why Choose Seven Store?">لماذا تختار Seven Store؟</h2>
     </div>
     <div class="why-grid" id="why-grid"></div>
   </div>
@@ -1284,7 +1289,6 @@ box-sizing:border-box;
   <div class="container">
     <div class="section-header reveal">
       <span class="section-eyebrow" data-ar="آراء العملاء" data-en="Customer Reviews">آراء العملاء</span>
-      <h2 class="section-title" data-ar="ماذا يقول عملاؤنا" data-en="What Our Clients Say">ماذا يقول عملاؤنا</h2>
     </div>
     <div class="reviews-grid reveal" id="reviews-grid"></div>
   </div>
@@ -1294,7 +1298,6 @@ box-sizing:border-box;
   <div class="container">
     <div class="section-header reveal">
       <span class="section-eyebrow" data-ar="الأسئلة الشائعة" data-en="FAQ">الأسئلة الشائعة</span>
-      <h2 class="section-title" data-ar="أسئلة وأجوبة" data-en="Questions & Answers">أسئلة وأجوبة</h2>
     </div>
     <div class="faq-list reveal" id="faq-list"></div>
   </div>
@@ -1304,7 +1307,6 @@ box-sizing:border-box;
   <div class="container">
     <div class="section-header reveal">
       <span class="section-eyebrow" data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</span>
-      <h2 class="section-title" data-ar="نحن هنا لمساعدتك" data-en="We're Here to Help">نحن هنا لمساعدتك</h2>
     </div>
     <div class="contact-card reveal">
       <div class="contact-icon-wrap"><i class="fab fa-whatsapp"></i></div>
@@ -1322,8 +1324,7 @@ box-sizing:border-box;
 
 <section style="padding:48px 24px;text-align:center;background:var(--bg);">
   <div class="container">
-    <p style="font-size:1rem;font-weight:700;color:var(--text-600);margin-bottom:20px;" data-ar="تابعنا على" data-en="Follow Us On">تابعنا على</p>
-    <div style="display:flex;justify-content:center;align-items:center;gap:20px;flex-wrap:wrap;">
+    <p style="font-size:1rem;font-weight:700;color:var(--text-600);margin-bottom:20px;" data-ar="ابقَ على تواصل معنا" data-en="Stay Connected">ابقَ على تواصل معنا</p>   <div style="display:flex;justify-content:center;align-items:center;gap:20px;flex-wrap:wrap;">
       <a href="https://snapchat.com/t/fMuMKGyM" target="_blank" rel="noopener" aria-label="Snapchat"
         style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#fffc00,#f5d800);display:flex;align-items:center;justify-content:center;color:#000;font-size:1.4rem;box-shadow:0 4px 16px rgba(255,252,0,.35);transition:transform .3s;">
         <i class="fab fa-snapchat"></i>
@@ -1768,14 +1769,14 @@ const faqData = [
   {
     qAr: 'كيف يتم تسليم الاشتراك؟',
     qEn: 'How is the subscription delivered?',
-    aAr: 'يتم تسليم الاشتراك فورياً عبر واتساب بعد التواصل معنا وإتمام عملية الدفع. استلم اشتراكك في دقائق.',
-    aEn: 'The subscription is delivered instantly via WhatsApp after contacting us. Receive your subscription within minutes.'
+    aAr: 'يتم تسليم الاشتراك خلال دقائق بعد إتمام عملية الدفع، وإرسال بيانات التفعيل.',
+    aEn: 'Your subscription is delivered within minutes after payment is completed. The activation details will be sent.'
   },
   {
     qAr: 'هل الاشتراكات أصلية ومضمونة؟',
-    qEn: 'Are the subscriptions original and guaranteed?',
-    aAr: 'نعم، جميع اشتراكاتنا أصلية 100% ومضمونة. في حال وجود أي مشكلة نحلها فوراً أو نستبدل الحساب.',
-    aEn: 'Yes, all our subscriptions are 100% original and guaranteed. In case of any issue, we resolve or replace it immediately.'
+qEn: 'Are the subscriptions original and guaranteed?',
+aAr: 'جميع اشتراكاتنا موثوقة وأصلية، ونضمن لك أفضل تجربة مع دعم مستمر.',
+aEn: 'All our subscriptions are authentic and reliable. We guarantee you the best experience with continuous support.'
   }
 ];
 
