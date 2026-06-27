@@ -1055,7 +1055,9 @@ box-sizing:border-box;
         z-index:5;
       }
       [data-theme="dark"] .modal-actions{ background:var(--bg-soft, #1e293b); }
-      [data-theme="dark"] #contact-subtext { color:#ffffff; }
+      [data-theme="dark"] #contact-subtext { color:#ffffff !important; }
+      [data-theme="dark"] #stay-connected-text { color:#ffffff !important; }
+      [data-theme="light"] #contact-subtext, [data-theme="light"] #stay-connected-text { color:#52606d !important; }
       [data-theme="dark"] .section-eyebrow { background:#ffffff; color:var(--blue-700); border-color:#ffffff; }
     }
     @media(max-width:480px){
@@ -1328,7 +1330,7 @@ box-sizing:border-box;
 
 <section style="padding:48px 24px;text-align:center;background:var(--bg);">
   <div class="container">
-    <p style="font-size:1rem;font-weight:700;color:var(--text-600);margin-bottom:20px;" data-ar="ابقَ على تواصل معنا" data-en="Stay Connected">ابقَ على تواصل معنا</p>   <div style="display:flex;justify-content:center;align-items:center;gap:20px;flex-wrap:wrap;">
+    <p id="stay-connected-text" style="font-size:1rem;font-weight:700;color:var(--text-600);margin-bottom:20px;" data-ar="ابقَ على تواصل معنا" data-en="Stay Connected">ابقَ على تواصل معنا</p>   <div style="display:flex;justify-content:center;align-items:center;gap:20px;flex-wrap:wrap;">
       <a href="https://snapchat.com/t/fMuMKGyM" target="_blank" rel="noopener" aria-label="Snapchat"
         style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#fffc00,#f5d800);display:flex;align-items:center;justify-content:center;color:#000;font-size:1.4rem;box-shadow:0 4px 16px rgba(255,252,0,.35);transition:transform .3s;">
         <i class="fab fa-snapchat"></i>
