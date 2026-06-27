@@ -602,6 +602,7 @@ box-sizing:border-box;
     }
     .btn-details:hover { background:var(--blue-700); color:#fff; transform:translateY(-1px); }
     .btn-details:active { transform:scale(.97); }
+    [data-theme="dark"] .btn-details { color:#ffffff; }
     .btn-order {
       padding:10px; border-radius:var(--radius-sm);
       background:linear-gradient(135deg,var(--blue-700),var(--blue-500));
@@ -635,6 +636,7 @@ box-sizing:border-box;
       box-shadow:var(--shadow-sm); transition:all var(--transition);
     }
     .slider-btn:hover { background:var(--blue-700); color:#fff; border-color:var(--blue-700); }
+    [data-theme="dark"] .slider-btn { color:#ffffff; }
 
     /* ============================================================
        CATEGORIES
@@ -663,6 +665,7 @@ box-sizing:border-box;
       transform:translateY(-3px);
     }
     .cat-chip.active i, .cat-chip:hover i { color:#fff; }
+    [data-theme="dark"] .cat-chip { color:#ffffff; }
 
     /* Search & Sort bar */
     .products-toolbar {
@@ -1052,6 +1055,7 @@ box-sizing:border-box;
         z-index:5;
       }
       [data-theme="dark"] .modal-actions{ background:var(--bg-soft, #1e293b); }
+      [data-theme="dark"] #contact-subtext { color:#ffffff; }
       [data-theme="dark"] .section-eyebrow { background:#ffffff; color:var(--blue-700); border-color:#ffffff; }
     }
     @media(max-width:480px){
@@ -1308,8 +1312,7 @@ box-sizing:border-box;
     </div>
     <div class="contact-card reveal">
       <div class="contact-icon-wrap"><i class="fab fa-whatsapp"></i></div>
-      <p style="color:var(--text-400);font-size:.88rem;margin-bottom:8px;" data-ar="للطلبات والاستفسارات" data-en="For orders and inquiries">للطلبات والاستفسارات</p>
-      <p style="font-size:.88rem;color:var(--text-600);" data-ar="متاحون على مدار الساعة" data-en="Available 24/7">متاحون على مدار الساعة</p>
+      <p id="contact-subtext" style="color:var(--text-400);font-size:.88rem;margin-bottom:8px;" data-ar="للطلبات والاستفسارات" data-en="For orders and inquiries">للطلبات والاستفسارات</p>
       <div class="contact-actions">
         <a class="btn-whatsapp" id="contact-wa-btn" href="#" target="_blank" rel="noopener">
           <i class="fab fa-whatsapp"></i>
