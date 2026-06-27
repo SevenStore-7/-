@@ -2,8 +2,8 @@
   "name": "Seven Store — اشتراكات رقمية",
   "short_name": "Seven Store",
   "description": "متجر اشتراكات رقمية",
-  "start_url": "/",
-  "scope": "/",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
   "orientation": "portrait-primary",
   "background_color": "#EEF4FF",
@@ -38,7 +38,7 @@
       "name": "المنتجات",
       "short_name": "المنتجات",
       "description": "تصفح اشتراكاتنا الرقمية",
-      "url": "/#products",
+      "url": "./#products",
       "icons": [{ "src": "assets/images/image_01.jpg", "sizes": "192x192" }]
     },
     {
